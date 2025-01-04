@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Transaksi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html"> <img src="Logo.jpg" alt="Logo Shoes Run" class="logo"> </a>
+    <h1>SHOES.RUN</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="Daftar Transaksi.html">Transaksi</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="daftar-transaksi">
+      <h2>Daftar Transaksi</h2>
+      <table id="tabel-transaksi" id="cellAksi"> 
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Nama Barang</th>
+            <th>Total</th>            
+            <th>Harga</th>
+            <th>Hapus</th>
+          </tr>
+        </thead>
+        <tbody>
+       
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Aplikasi Saya. Semua hak dilindungi.</p>
+  </body>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px; 
+  height: auto;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 5x;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}  
+</style>
+<script>
+  // Ambil data transaksi dari localStorage
+  let daftarTransaksi = JSON.parse(localStorage.getItem("daftarTransaksi")) || [];
+
+  // Tampilkan data transaksi di tabel
+  const tabelTransaksi = document.getElementById("tabel-transaksi").getElementsByTagName("tbody")[0];
+
+  // Fungsi untuk menampilkan transaksi
+  function tampilkanTransaksi() {
+    // Bersihkan tabel sebelum menampilkan data baru
+    tabelTransaksi.innerHTML = "";
+
+    // Tampilkan setiap transaksi
+    daftarTransaksi.forEach((transaksi, index) => {
+      const row = tabelTransaksi.insertRow();
+      const cellTanggal = row.insertCell(0);
+      const cellBarang = row.insertCell(1);
+      const cellJumlah = row.insertCell(2);
+      const cellTotal = row.insertCell(3);
+      const cellAksi = row.insertCell(4);
+      
+      // Tampilkan tanggal transaksi
+      cellTanggal.textContent = transaksi.tanggal;
+  
+      // Tampilkan daftar barang
+      const daftarBarang = transaksi.items.map((item) => `${item.nama} (Rp ${item.harga.toLocaleString()})`).join(", ");
+      cellBarang.textContent = daftarBarang;
+  
+      // Tampilkan jumlah barang
+      cellJumlah.textContent = transaksi.items.length;
+  
+      // Tampilkan total harga
+      cellTotal.textContent = `Rp ${transaksi.total.toLocaleString()}`;
+
+      // Buat ikon hapus
+      const iconHapus = document.createElement("i");
+      iconHapus.className = "fas fa-trash-alt"; // Ikon hapus dari Font Awesome
+      iconHapus.style.cursor = "pointer";
+      iconHapus.style.color = "red";
+      iconHapus.onclick = () => hapusTransaksi(index); // Fungsi hapus saat diklik
+      cellAksi.appendChild(iconHapus);
+    });
+  }
+    
+  // Fungsi untuk menghapus transaksi
+  function hapusTransaksi(index) {
+    if (confirm("Apakah Anda yakin ingin menghapus transaksi ini?")) {
+      daftarTransaksi.splice(index, 1); // Hapus transaksi dari array
+      localStorage.setItem("daftarTransaksi", JSON.stringify(daftarTransaksi)); // Simpan kembali ke localStorage
+      tampilkanTransaksi(); // Perbarui tampilan tabel
+    }
+  }
+
+  // Tampilkan data saat halaman dimuat
+  tampilkanTransaksi();
+</script>
+</html>

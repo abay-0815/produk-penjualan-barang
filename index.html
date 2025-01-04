@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Penjualan Barang</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html"> <img src="/PEMROGAMAN WEB TUGAS/UAS_WEB 1/Logo.jpg" alt="Logo Shoes Run" class="logo"> </a>
+      <h1>SHOES.RUN</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="Daftar Transaksi.html">Transaksi</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="daftar-barang">
+      <h2>Produk Tersedia</h2>
+      <div class="barang">
+        <div class="item">
+          <img src="/PEMROGAMAN WEB TUGAS/UAS_WEB 1/910_haze_1_5_hitam_hijau_neon_-1.jpg" alt="910 nineteen" class="foto-barang">
+          <h3>910 nineteen hitam-hijau neon</h3>
+          <p>Harga: Rp 850.000</p>
+          <button onclick="tambahKeKeranjang('910 hitam-hijau neon', 850000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="/PEMROGAMAN WEB TUGAS/UAS_WEB 1/910_haze_infiknit_1.0_-_biru_ultraminecoklatnavy_1.jpg" alt="910 nineteen" class="foto-barang">
+          <h3>910 nineteen infiknit-biru ultramine-coklat-navy</h3>
+          <p>Harga: Rp 900.000</p>
+          <button onclick="tambahKeKeranjang('910 infiknit-biru ultramine-coklat-navy', 900000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="/PEMROGAMAN WEB TUGAS/UAS_WEB 1/910_haze_tempo_-_olivekuningtembaga_1.jpg" alt="910 nineteen" class="foto-barang">
+          <h3>910 nineteen tempo-olive-kuning tembaga</h3>
+          <p>Harga: Rp 940.000</p>
+          <button onclick="tambahKeKeranjang('910 tempo-olive-kuning tembaga', 940000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="adidas Running Runfalcon 5.jpg" alt="adidas" class="foto-barang">
+          <h3>adidas Running Runfalcon 5</h3>
+          <p>Harga: Rp 1.500.000</p>
+          <button onclick="tambahKeKeranjang('adidas Runfalcon 5', 1500000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="adidas Running Supernova Rise 2.jpg" alt="adidas" class="foto-barang">
+          <h3>adidas Running Supernova Rise 2</h3>
+          <p>Harga: Rp 1.800.000</p>
+          <button onclick="tambahKeKeranjang('adidas Supernova Rise 2', 1800000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="Sepatu Running Adizero Prime X 2.0 STRUNG.jpg" alt="adidas" class="foto-barang">
+          <h3>adidas Running Adizero Prime X 2.0 STRUNG</h3>
+          <p>Harga: Rp 1.950.000</p>
+          <button onclick="tambahKeKeranjang('adidas Prime X 2.0 STRUNG', 1950000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="sepatu running mills tosca_orange_white.jpg" alt="mills" class="foto-barang">
+          <h3>Sepatu running mills tosca_orange_white</h3>
+          <p>Harga: Rp 990.000</p>
+          <button onclick="tambahKeKeranjang('mills tosca_orange_white', 990000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="Mills Sepatu Enermax Dynaplate.jpg" alt="mills" class="foto-barang">
+          <h3>Sepatu running mills Enermax Dynaplate</h3>
+          <p>Harga: Rp 950.000</p>
+          <button onclick="tambahKeKeranjang('mills Enermax Dynaplate', 950000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="item">
+          <img src="MILLS TREXIMO SAGA V2.jpg" alt="mills" class="foto-barang">
+          <h3>Sepatu running mills TREXIMO SAGA V2</h3>
+          <p>Harga: Rp 750.000</p>
+          <button onclick="tambahKeKeranjang('mills TREXIMO SAGA V2', 750000)">Tambah ke Keranjang</button>
+        </div>
+      </div>
+    </section>
+    <section id="keranjang">
+        <h2>Detail Transaksi</h2>
+        <ul id="daftar-keranjang"></ul>
+        <p>Total Harga: <span id="total-harga">Rp 0</span></p>
+        <div class="button-container">
+          <button onclick="checkout()">Checkout</button>
+          <a href="Daftar Transaksi.html"><button onclick="DaftarTransaksi()">Daftar Transaksi</button></a>
+        </div>
+      </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Aplikasi Penjualan Barang</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px; 
+  height: auto;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+h4 {
+  color: #333;
+  
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 5px;
+}
+
+.barang {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.foto-barang {
+  width: 100%; 
+  max-width: 150px; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto 10px; 
+  border-radius: 8px; 
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  flex: 1;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;  
+}
+
+button:hover {
+  background-color: #45a049;  
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 10px;
+}
+
+#daftar-keranjang {
+  list-style: none;
+  padding: 0;
+}
+
+#daftar-keranjang li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+footer {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 5x;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+<script>
+  let keranjang = [];
+  let totalHarga = 0;
+ 
+  function tambahKeKeranjang(namaBarang, harga) {
+    keranjang.push({ nama: namaBarang, harga: harga });
+    totalHarga += harga;
+    updateKeranjang(); 
+  }
+  
+  function updateKeranjang() {
+    const daftarKeranjang = document.getElementById('daftar-keranjang');
+    const totalHargaElement = document.getElementById('total-harga');
+  
+    daftarKeranjang.innerHTML = '';
+    
+    keranjang.forEach((barang) => {
+      const li = document.createElement('li');
+      li.textContent = `${barang.nama} - Rp ${barang.harga.toLocaleString()}`;
+      daftarKeranjang.appendChild(li);
+    });
+    
+    totalHargaElement.textContent = `Rp ${totalHarga.toLocaleString()}`;
+  }
+
+ function checkout() {
+    if (keranjang.length === 0) {
+      alert('Keranjang belanja kosong!');
+    } else {
+    // Simpan data transaksi ke localStorage
+const transaksi = {
+  items: keranjang,
+  total: totalHarga,
+  tanggal: new Date().toLocaleString(),
+};
+let daftarTransaksi = JSON.parse(localStorage.getItem("daftarTransaksi")) || [];
+daftarTransaksi.push(transaksi);
+localStorage.setItem("daftarTransaksi", JSON.stringify(daftarTransaksi));
+
+// Pindahkan nama barang dan total harga ke halaman transaksi
+const namaBarang = keranjang.map((barang) => barang.nama).join(", ");
+const totalHargaElement = document.getElementById('total-harga');
+const transaksiElement = document.getElementById('transaksi');
+
+transaksiElement.innerHTML = `
+  <h2>Transaksi</h2>
+  <p>Nama Barang: ${namaBarang}</p>
+  <p>Total Harga: ${totalHargaElement.textContent}</p>
+  <button onclick="checkout()">Checkout</button>
+  <a href="Daftar Transaksi.html"><button onclick="DaftarTransaksi()">Daftar Transaksi</button></a>
+  <p>Terima kasih telah melakukan transaksi!</p>
+`;
+}
+}
+  
+</script>
+
+</html>
